@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+   "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name="loginForm" type="com.soat.happyref.struts.formbeans.LoginForm"/>
+		<form-bean name="subscribeForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="nom" type="java.lang.String" initial=""/>
+			<form-property name="prenom" type="java.lang.String" initial=""/>
+			<form-property name="mail" type="java.lang.String" initial=""/>
+			<form-property name="password" type="java.lang.String" initial=""/>
+			<form-property name="password2" type="java.lang.String" initial=""/>
+		</form-bean>
+	</form-beans>
+	
+	<!-- Global forwards -->
+	<global-forwards>
+    	<forward name="globalLogin" path="happyref.login"></forward>
+	</global-forwards>
+	
+	
+    <action-mappings>
+		<action
+            path="/index"
+            forward="happyref.home"/>
+            
+        <action path="/search" 
+        	type="com.soat.happyref.struts.action.SearchAction">
+      		<forward name="succes" path="happyref.search" />
+      		<forward name="error" path="happyref.error" />
+   		</action>
+   		
+   		<action path="/logout" 
+        	type="com.soat.happyref.struts.action.LogoutAction">
+      		<forward name="succes" path="happyref.home" />
+   		</action>
+   		
+   		<action path="/product" 
+        	type="com.soat.happyref.struts.action.ProductAction">
+      		<forward name="succes" path="happyref.product" />
+      		<forward name="error" path="happyref.error" />
+   		</action>
+   		
+   		<action
+            path="/auth"
+            forward="happyref.login"
+        />
+            
+   		<action path="/login" 
+        	type="com.soat.happyref.struts.action.LoginAction" 
+        	scope="request"
+	  		name="loginForm" 
+	  		validate="true"
+	  		input="happyref.login">
+	  			<forward name="succes" path="happyref.user.home" />
+   		</action>
+   		
+   		<action
+            path="/subscriptionvue"
+            forward="happyref.subscribe"
+        />
+   		<action path="/subscribe" 
+        	type="com.soat.happyref.struts.action.SubscribeAction" 
+        	scope="session"
+	  		name="subscribeForm" 
+	  		validate="true"
+	  		input="happyref.subscribe"
+	  		>
+	  			<forward name="succes" path="happyref.user.home" />
+	      		<forward name="error" path="happyref.subscribe" />
+   		</action>
+   		
+    </action-mappings>
+    
+    <!-- ========== Tiles Plug In =================================== -->
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/tiles-def.xml" />
+		<set-property property="definitions-parser-validate" value="true" />
+		<set-property property="moduleAware" value="true" />
+	</plug-in>
+	<!-- ========== Validator Plug In =================================== -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames" value="/org/apache/struts/validator/validator-rules.xml, /WEB-INF/validation.xml"/>
+	</plug-in>
+    
+    <!-- resources -->
+    <message-resources parameter="ErrorMessages" null="false"/>
+    <message-resources parameter="Messages" key="messages"/>
+    
+</struts-config>

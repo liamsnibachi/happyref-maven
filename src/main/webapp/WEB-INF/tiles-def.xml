@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN" "http://struts.apache.org/dtds/tiles-config_1_3.dtd">
+<tiles-definitions>		
+	<!-- Definitions communes -->
+	<definition name="common.blank"  page="/common/blank.jsp"/>
+	<definition name="common.header" page="/common/header.jsp"/>
+	<definition name="common.footer" page="/common/footer.jsp"/>
+	
+	<definition name="common.layout" page="/common/layout.jsp">
+        <put name="pageTitle" type="String" value="Happyref"/>
+		<put name="header"  value="common.header"/>
+		<put name="content" value="common.blank"/>
+		<put name="footer"  value="common.footer"/>
+	</definition>
+
+	<!-- Définition de la vue home -->
+	<definition name="home.content" page="/home/content.jsp" />
+	<definition name="happyref.home" extends="common.layout">
+        <put name="pageTitle" type="String" value="Happyref - Accueil"/>
+		<put name="content" value="home.content"/>
+	</definition>
+	
+	<!-- Définition de la vue login -->
+	<definition name="login.content" page="/common/login.jsp" />
+	<definition name="happyref.login" extends="common.layout">
+        <put name="pageTitle" type="String" value="Happyref - Login"/>
+		<put name="content" value="login.content"/>
+	</definition>
+	
+	<!-- Définition de la vue inscription -->
+	<definition name="subscribe.content" page="/common/subscribe.jsp" />
+	<definition name="happyref.subscribe" extends="common.layout">
+        <put name="pageTitle" type="String" value="Happyref - Inscription"/>
+		<put name="content" value="subscribe.content"/>
+	</definition>
+	
+	<!-- Définition de la vue inscription -->
+	<definition name="user.content" page="/user/home.jsp" />
+	<definition name="happyref.user.home" extends="common.layout">
+        <put name="pageTitle" type="String" value="Happyref - Mon compte"/>
+		<put name="content" value="user.content"/>
+	</definition>
+	
+	<!-- Définition de la vue des résultats de la recherche -->
+	<definition name="search.content" page="/search/result.jsp" />
+	<definition name="happyref.search" extends="common.layout">
+        <put name="pageTitle" type="String" value="Happyref - Résultats de la recherche"/>
+		<put name="content" value="search.content"/>
+	</definition>
+	
+	<!-- Définition de la vue errors -->
+	<definition name="error.content" page="/errors/error.jsp" />
+	<definition name="happyref.error" extends="common.layout">
+        <put name="pageTitle" type="String" value="Happyref - Résultats de la recherche"/>
+		<put name="content" value="error.content"/>
+	</definition>
+	
+	<!-- Définition de la vue fiche produit -->
+	<definition name="product.content" page="/product/product.jsp" />
+	<definition name="happyref.product" extends="common.layout">
+        <put name="pageTitle" type="String" value="Happyref - Fiche produit"/>
+		<put name="content" value="product.content"/>
+	</definition>
+	
+</tiles-definitions>

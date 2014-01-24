@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.soat.happyref.beans">
+	<class name="com.soat.happyref.beans.User" table="USER">
+		<id name="id" type="int" column="ID_USER">
+			<generator class="increment" />
+		</id>
+		<property name="mail" column="EMAIL" type="string" />
+		<property name="nom" column="NAME" type="string" />
+		<property name="prenom" column="FIRSTNAME" type="string" />
+		<property name="password" column="PASSWORD" type="string" />
+	</class>
+</hibernate-mapping>

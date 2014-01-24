@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.soat.happyref.beans">
+	<class name="com.soat.happyref.beans.Category" table="CATEGORY">
+		<id name="id" type="int" column="ID_CATEGORY">
+			<generator class="increment" />
+		</id>
+		<property name="name" column="NAME_CATEGORY" type="string" />
+		
+		<set name="bookSet" table="CATEGORY_BOOK">
+			<key column="ID_CATEGORY" />
+			<many-to-many column="ID_BOOK" class="Book" />
+		</set>
+
+	</class>
+</hibernate-mapping>

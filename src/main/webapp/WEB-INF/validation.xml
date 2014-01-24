@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form-validation>
+	<global>
+		<constant>
+			<constant-name>formatpassword</constant-name>
+			<constant-value>^[a-zA-Z0-9\._-]{6,}$</constant-value>
+		</constant>
+	</global>
+	<formset>
+		<form name="subscribeForm">
+			<field property="mail" depends="required,email">
+				<arg0 key="user.mail"/>
+			</field>
+	  		<field property="nom" depends="required">
+				<arg0 key="user.nom"/>
+			</field>
+			<field property="prenom" depends="required">
+				<arg0 key="user.prenom"/>
+			</field>
+			<field property="password" depends="required,mask">
+				<arg0 key="user.password"/>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>${formatpassword}</var-value>
+				</var>
+			</field>
+			<field property="password2" depends="required,validwhen">
+				<arg0 key="user.password2"/>
+				<msg name="validwhen" key="custom.password.confirmation"/>
+				<var>
+		          <var-name>test</var-name>
+		          <var-value>(*this*==password)</var-value>
+		        </var>
+			</field>
+	  	</form>
+	</formset>
+</form-validation>

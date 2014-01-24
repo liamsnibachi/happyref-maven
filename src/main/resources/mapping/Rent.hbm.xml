@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.soat.happyref.beans">
+	<class name="com.soat.happyref.beans.Rent" table="RENT">
+		<id name="id" type="int" column="ID_RENT">
+			<generator class="increment" />
+		</id>
+		<property name="dateRent" column="DATE_RENT" type="timestamp" />
+		<property name="dateReturn" column="DATE_RETURN" type="timestamp" />
+
+
+		<set name="userSet" inverse="true" order-by="ID_BOOK">
+			<key column="ID_USER" />
+			<one-to-many class="User" />
+		</set>
+		
+	</class>
+</hibernate-mapping>

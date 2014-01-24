@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.soat.happyref.beans">
+	<class name="com.soat.happyref.beans.Book" table="BOOK">
+		<id name="id" type="int" column="ID_BOOK">
+			<generator class="increment" />
+		</id>
+		<property name="isbn" column="ISBN" type="string" />
+		<property name="title" column="TITLE" type="string" />
+		<property name="author" column="AUTHOR" type="string" />
+		<property name="imageName" column="IMAGE_NAME" type="string" />
+		<property name="shortDescription" column="SHORT_DESCRIPTION"
+			type="string" />
+		<property name="longDescription" column="LONG_DESCRIPTION"
+			type="string" />
+
+		<set name="categorySet" table="CATEGORY_BOOK">
+			<key column="ID_BOOK" />
+			<many-to-many column="ID_CATEGORY" class="Category" />
+		</set>
+
+		<set name="rentSet" inverse="true" order-by="ID_RENT">
+			<key column="ID_BOOK" />
+			<one-to-many class="Rent" />
+		</set>
+	</class>
+</hibernate-mapping>
